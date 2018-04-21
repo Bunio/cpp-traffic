@@ -3,6 +3,8 @@ c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(32): warning C4244
 c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(33): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(37): warning C4305: 'argument': truncation from 'double' to 'float'
 c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(38): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
-c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(51): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
-c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(52): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(39): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(40): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(65): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
+c:\users\jakub.duzyk\uj\sfml\traffic\traffic\traffic\main.cpp(66): warning C4244: 'argument': conversion from 'const int' to 'float', possible loss of data
   Traffic.vcxproj -> C:\Users\jakub.duzyk\UJ\Sfml\Traffic\Traffic\x64\Debug\Traffic.exe

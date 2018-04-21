@@ -35,8 +35,9 @@ int main()
 	// PLAYER --------------------------
 	player.setTexture(playerTexture);
 	player.scale(0.35, 0.35);
-	int playerWidth = player.getLocalBounds().width;
-	player.setPosition(scene_width/2 - playerWidth * player.getScale().x /2, 100);
+	int playerWidth = player.getLocalBounds().width * player.getScale().x;
+	int playerHeight = player.getLocalBounds().height * player.getScale().y;
+	player.setPosition(scene_width/2 - playerWidth /2, scene_height - playerHeight - 20);
 
 	while (window.isOpen())
 	{
@@ -48,11 +49,23 @@ int main()
 		}
 		window.clear();
 
+		// INPUT ------------------------------------------
+
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
+		{
+			// left key is pressed: move our character
+			player.move(-4, 0);
+		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
+		{
+			// left key is pressed: move our character
+			player.move(4, 0);
+		}
+		// ROAD -------------------------------------------
+
 		road1.move(sf::Vector2f(0, speed));
 		road2.move(sf::Vector2f(0, speed));
 		window.draw(road1);
 		window.draw(road2);
-		window.draw(player);
 
 		if (road1.getPosition().y >= scene_height) {
 			road1.setPosition(sf::Vector2f(0, road2.getPosition().y - height));
@@ -60,6 +73,14 @@ int main()
 		if (road2.getPosition().y >= scene_height) {
 			road2.setPosition(sf::Vector2f(0, road1.getPosition().y - height));
 		}
+		
+
+		// PLAYER ------------------------------------------
+
+		window.draw(player);
+
+		// -------------------------------------------------
+
 		window.display();
 	}
 
