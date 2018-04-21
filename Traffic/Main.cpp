@@ -1,8 +1,8 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-const int speed = 15;
-const int scene_width = 640;
+const int speed = 30;
+const int scene_width = 700;
 const int scene_height = 1024;
 
 int main()
@@ -13,19 +13,30 @@ int main()
 	sf::Font font;
 	font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
 
-	sf::Texture texture;
-	if (!texture.loadFromFile("./road.jpg"))
+	window.setFramerateLimit(60);
+
+	// TEXTURE LOADING ------------------
+
+	sf::Texture roadTexture;
+	sf::Texture playerTexture;
+	if (!roadTexture.loadFromFile("./road.jpg") & !playerTexture.loadFromFile("./motorbike.png"))
 	{
 		std::cout << "Error loading image";
 	}
-	sf::Sprite sprite1, sprite2;
-	sprite1.setTexture(texture);
-	sprite2.setTexture(texture);
 
-	int height = sprite1.getLocalBounds().height;
-	sprite2.setPosition(sf::Vector2f(0.0, -height));
+	// ROAD ----------------------------
 
-	window.setFramerateLimit(60);
+	sf::Sprite road1, road2, player;
+	road1.setTexture(roadTexture);
+	road2.setTexture(roadTexture);
+	int height = road1.getLocalBounds().height;
+	road2.setPosition(sf::Vector2f(0.0, -height));
+
+	// PLAYER --------------------------
+	player.setTexture(playerTexture);
+	player.scale(0.35, 0.35);
+	int playerWidth = player.getLocalBounds().width;
+	player.setPosition(scene_width/2 - playerWidth * player.getScale().x /2, 100);
 
 	while (window.isOpen())
 	{
@@ -37,16 +48,17 @@ int main()
 		}
 		window.clear();
 
-		sprite1.move(sf::Vector2f(0, speed));
-		sprite2.move(sf::Vector2f(0, speed));
-		window.draw(sprite1);
-		window.draw(sprite2);
+		road1.move(sf::Vector2f(0, speed));
+		road2.move(sf::Vector2f(0, speed));
+		window.draw(road1);
+		window.draw(road2);
+		window.draw(player);
 
-		if (sprite1.getPosition().y >= scene_height) {
-			sprite1.setPosition(sf::Vector2f(0, sprite2.getPosition().y - height));
+		if (road1.getPosition().y >= scene_height) {
+			road1.setPosition(sf::Vector2f(0, road2.getPosition().y - height));
 		}
-		if (sprite2.getPosition().y >= scene_height) {
-			sprite2.setPosition(sf::Vector2f(0, sprite1.getPosition().y - height));
+		if (road2.getPosition().y >= scene_height) {
+			road2.setPosition(sf::Vector2f(0, road1.getPosition().y - height));
 		}
 		window.display();
 	}
