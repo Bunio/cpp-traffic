@@ -5,6 +5,10 @@ const int speed = 30;
 const int scene_width = 700;
 const int scene_height = 1024;
 
+float speed_cur = 1.0;
+const float speed_max = 15;
+const float speed_vel = 1.05;
+const float speed_friction = 0.95;
 int main()
 {
 	sf::RenderWindow window(sf::VideoMode(scene_width, scene_height),
@@ -54,14 +58,20 @@ int main()
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
 		{
 			// left key is pressed: move our character
-			player.move(-4, 0);
+			speed_cur -= 1 * speed_vel;
 		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
-			// left key is pressed: move our character
-			player.move(4, 0);
+			speed_cur += 1 * speed_vel;
+
+			std::cout << speed_cur;
+		}
+
+		if (speed_cur > speed_max) {
+			speed_cur = speed_max;
 		}
 		// ROAD -------------------------------------------
 
+	
 		road1.move(sf::Vector2f(0, speed));
 		road2.move(sf::Vector2f(0, speed));
 		window.draw(road1);
@@ -78,6 +88,8 @@ int main()
 		// PLAYER ------------------------------------------
 
 		window.draw(player);
+		player.move(speed_cur, 0);
+		speed_cur *= speed_friction;
 
 		// -------------------------------------------------
 
