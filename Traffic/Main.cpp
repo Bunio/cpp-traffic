@@ -1,7 +1,9 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
 
-const int speed = 30;
+#include "Player.h"
+
+const int speed = 50;
 const int scene_width = 700;
 const int scene_height = 1024;
 
@@ -30,18 +32,20 @@ int main()
 
 	// ROAD ----------------------------
 
-	sf::Sprite road1, road2, player;
+	sf::Sprite road1, road2;
 	road1.setTexture(roadTexture);
 	road2.setTexture(roadTexture);
 	int height = road1.getLocalBounds().height;
 	road2.setPosition(sf::Vector2f(0.0, -height));
 
+	Player* player = new Player();
+
 	// PLAYER --------------------------
-	player.setTexture(playerTexture);
-	player.scale(0.35, 0.35);
-	int playerWidth = player.getLocalBounds().width * player.getScale().x;
-	int playerHeight = player.getLocalBounds().height * player.getScale().y;
-	player.setPosition(scene_width/2 - playerWidth /2, scene_height - playerHeight - 20);
+	player->setTexture(playerTexture);
+	player->scale(0.35, 0.35);
+	int playerWidth = player->getRealWidth();
+	int playerHeight = player->getRealHeight();
+	player->setPosition(scene_width/2 - playerWidth /2, scene_height - playerHeight - 20);
 
 	while (window.isOpen())
 	{
@@ -62,8 +66,6 @@ int main()
 		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
 		{
 			speed_cur += 1 * speed_vel;
-
-			std::cout << speed_cur;
 		}
 
 		if (speed_cur > speed_max) {
@@ -87,8 +89,8 @@ int main()
 
 		// PLAYER ------------------------------------------
 
-		window.draw(player);
-		player.move(speed_cur, 0);
+		window.draw(*player);
+		player->move(speed_cur, 0);
 		speed_cur *= speed_friction;
 
 		// -------------------------------------------------
