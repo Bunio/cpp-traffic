@@ -3,6 +3,7 @@
 
 #include "Player.h"
 #include "Files.h"
+#include "InputHandler.h"
 
 const int speed = 50;
 const int scene_width = 700;
@@ -40,6 +41,7 @@ int main()
 	road2.setPosition(sf::Vector2f(0.0, -height));
 
 	Player* player = new Player();
+	InputHandler* input = new InputHandler(player);
 
 	// PLAYER --------------------------
 	player->setTexture(playerTexture);
@@ -73,8 +75,7 @@ int main()
 		}
 		
 
-		// PLAYER ------------------------------------------
-
+		input->handleInput(2.0);
 		player->process(2.0);
 		window.draw(*player);
 
