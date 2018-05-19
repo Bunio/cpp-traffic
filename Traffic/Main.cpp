@@ -8,12 +8,11 @@ const int speed = 50;
 const int scene_width = 700;
 const int scene_height = 1024;
 
-float speed_cur = 1.0;
-const float speed_max = 15;
-const float speed_vel = 1.05;
-const float speed_friction = 0.95;
 int main()
 {
+
+	// TODO: Use camera
+
 	sf::RenderWindow window(sf::VideoMode(scene_width, scene_height),
 		"Hello SFML", sf::Style::Default);
 
@@ -26,6 +25,7 @@ int main()
 
 	sf::Texture roadTexture;
 	sf::Texture playerTexture;
+
 	if (!roadTexture.loadFromFile(Files::TEXTURE_ROAD) & !playerTexture.loadFromFile(Files::TEXTURE_MOTORBIKE))
 	{
 		std::cout << "Error loading image";
@@ -58,22 +58,7 @@ int main()
 		}
 		window.clear();
 
-		// INPUT ------------------------------------------
-
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left))
-		{
-			// left key is pressed: move our character
-			speed_cur -= 1 * speed_vel;
-		} else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right))
-		{
-			speed_cur += 1 * speed_vel;
-		}
-
-		if (speed_cur > speed_max) {
-			speed_cur = speed_max;
-		}
 		// ROAD -------------------------------------------
-
 	
 		road1.move(sf::Vector2f(0, speed));
 		road2.move(sf::Vector2f(0, speed));
@@ -90,9 +75,8 @@ int main()
 
 		// PLAYER ------------------------------------------
 
+		player->process(2.0);
 		window.draw(*player);
-		player->move(speed_cur, 0);
-		speed_cur *= speed_friction;
 
 		// -------------------------------------------------
 
