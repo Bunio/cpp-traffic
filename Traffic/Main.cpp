@@ -2,6 +2,7 @@
 #include <iostream>
 
 #include "Player.h"
+#include "Files.h"
 
 const int speed = 50;
 const int scene_width = 700;
@@ -17,7 +18,7 @@ int main()
 		"Hello SFML", sf::Style::Default);
 
 	sf::Font font;
-	font.loadFromFile("C:/Windows/Fonts/Arial.ttf");
+	font.loadFromFile(Files::FONT_ARIAL);
 
 	window.setFramerateLimit(60);
 
@@ -25,7 +26,7 @@ int main()
 
 	sf::Texture roadTexture;
 	sf::Texture playerTexture;
-	if (!roadTexture.loadFromFile("./road.jpg") & !playerTexture.loadFromFile("./motorbike.png"))
+	if (!roadTexture.loadFromFile(Files::TEXTURE_ROAD) & !playerTexture.loadFromFile(Files::TEXTURE_MOTORBIKE))
 	{
 		std::cout << "Error loading image";
 	}
