@@ -1,8 +1,9 @@
-#pragma once
+#ifndef GAME_OBJECT_H
+#define GAME_OBJECT_H
 
 class GameObject {
 public:
-	GameObject();
 	virtual void process(float delta) = 0;
-private:
 };
+
+#endif

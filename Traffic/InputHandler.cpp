@@ -1,12 +1,12 @@
-#include "PlayerClass.cpp"
 #include <SFML/Graphics.hpp>
+#include "InputHandler.h"
 
-class InputHandler {
-public:
-	InputHandler(PlayerClass* player) {
-		this->player = player;
-	}
-	void handleInput(float delta) {
+
+
+
+InputHandler::InputHandler(Player* player) { this->player = player; }
+
+void InputHandler::handleInput(float delta) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 			player->moveLeft();
 		}
@@ -14,8 +14,3 @@ public:
 			player->moveRight();
 		}
 	}
-
-private:
-	PlayerClass* player;
-
-};
