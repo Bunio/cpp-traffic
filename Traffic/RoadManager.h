@@ -1,3 +1,5 @@
+#ifndef ROAD_MANAGER_H
+#define ROAD_MANAGER_H
 #include "GameObject.h"
 #include "Road.h"
 #include <list>
@@ -14,3 +16,4 @@ private:
 	int speed;
 	int roadHeight;
 };
+#endif

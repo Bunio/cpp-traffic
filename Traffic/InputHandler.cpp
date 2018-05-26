@@ -6,7 +6,7 @@
 
 InputHandler::InputHandler(Player* player) { this->player = player; }
 
-void InputHandler::handleInput(float delta) {
+void InputHandler::process(float delta) {
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
 			player->moveLeft();
 		}

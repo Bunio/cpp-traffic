@@ -43,6 +43,9 @@
     <Filter Include="Source Files\GameObjects\Road">
       <UniqueIdentifier>{7a6225f2-71ee-4f43-a1d1-0f0332185922}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\GameObjects\Scenes">
+      <UniqueIdentifier>{bd126624-8a05-4b26-b519-067f1b0d44e6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -69,6 +72,9 @@
     <ClCompile Include="RoadManager.cpp">
       <Filter>Source Files\GameObjects\Road</Filter>
     </ClCompile>
+    <ClCompile Include="GameScene.cpp">
+      <Filter>Source Files\GameObjects\Scenes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Files.h">
@@ -94,6 +100,9 @@
     </ClInclude>
     <ClInclude Include="RoadManager.h">
       <Filter>Header Files\GameObjects\Road</Filter>
+    </ClInclude>
+    <ClInclude Include="GameScene.h">
+      <Filter>Header Files\GameObjects\Core</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

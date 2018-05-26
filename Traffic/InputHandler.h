@@ -3,11 +3,12 @@
 
 #pragma once
 #include "Player.h"
+#include "GameObject.h"
 
-class InputHandler {
+class InputHandler : public GameObject2D{
 public:
 	InputHandler(Player * player);
-	void handleInput(float delta);
+	void process(float delta);
 private:
 	Player * player;
 };
