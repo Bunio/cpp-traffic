@@ -16,9 +16,6 @@
     <Filter Include="Source Files\Constants">
       <UniqueIdentifier>{5ff391a7-3d7c-4cd9-bdd7-d5096f031709}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Input">
-      <UniqueIdentifier>{e5aee01c-c05c-4227-a91e-e61ab693f335}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\Constants">
       <UniqueIdentifier>{230d4f2d-a38e-46a5-89e4-1c0a01d7076b}</UniqueIdentifier>
     </Filter>
@@ -30,25 +27,22 @@
     <ClCompile Include="Main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Player.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Files.cpp">
       <Filter>Source Files\Constants</Filter>
     </ClCompile>
+    <ClCompile Include="GameObject.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PlayerClass.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
     <ClCompile Include="InputHandler.cpp">
-      <Filter>Source Files\Input</Filter>
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Player.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Files.h">
       <Filter>Header Files\Constants</Filter>
-    </ClInclude>
-    <ClInclude Include="InputHandler.h">
-      <Filter>Header Files\Input</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,9 +1,7 @@
 #include <SFML/Graphics.hpp>
 #include <iostream>
-
-#include "Player.h"
 #include "Files.h"
-#include "InputHandler.h"
+#include "PlayerClass.cpp"
 
 const int speed = 50;
 const int scene_width = 700;
@@ -40,15 +38,15 @@ int main()
 	int height = road1.getLocalBounds().height;
 	road2.setPosition(sf::Vector2f(0.0, -height));
 
-	Player* player = new Player();
-	InputHandler* input = new InputHandler(player);
+	PlayerClass playerClass;
+	GameObject* player = &playerClass;
 
 	// PLAYER --------------------------
-	player->setTexture(playerTexture);
-	player->scale(0.35, 0.35);
-	int playerWidth = player->getRealWidth();
-	int playerHeight = player->getRealHeight();
-	player->setPosition(scene_width/2 - playerWidth /2, scene_height - playerHeight - 20);
+	playerClass.setTexture(playerTexture);
+	playerClass.scale(0.35, 0.35);
+	int playerWidth = playerClass.getRealWidth();
+	int playerHeight = playerClass.getRealHeight();
+	playerClass.setPosition(scene_width/2 - playerWidth /2, scene_height - playerHeight - 20);
 
 	while (window.isOpen())
 	{
@@ -75,9 +73,10 @@ int main()
 		}
 		
 
-		input->handleInput(2.0);
+		//input->handleInput(2.0);
 		player->process(2.0);
-		window.draw(*player);
+		//playerClass.process(2.0);
+		window.draw(playerClass);
 
 		// -------------------------------------------------
 

@@ -1,14 +1,21 @@
-#include "InputHandler.h"
-#include "Player.h"
+#include "PlayerClass.cpp"
+#include <SFML/Graphics.hpp>
 
-
-InputHandler::InputHandler(Player* player) {}
-
-void InputHandler::handleInput(float delta) {
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
-		player->moveLeft();
+class InputHandler {
+public:
+	InputHandler(PlayerClass* player) {
+		this->player = player;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
-		player->moveRight();
+	void handleInput(float delta) {
+		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Left)) {
+			player->moveLeft();
+		}
+		else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Right)) {
+			player->moveRight();
+		}
 	}
-}
+
+private:
+	PlayerClass* player;
+
+};
