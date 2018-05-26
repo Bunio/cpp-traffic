@@ -2,10 +2,9 @@
 #define PLAYER_H
 
 #include <iostream>
-#include <SFML/Graphics.hpp>
 #include "GameObject.h"
 
-class Player : public GameObject, public sf::Sprite {
+class Player : public GameObject{
 public:
 	void process(float delta);
 	void moveLeft();
