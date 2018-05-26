@@ -2,12 +2,9 @@
 #define GAME_OBJECT_H
 #include <SFML/Graphics.hpp>
 
-class GameObject : public sf::Sprite {
+class GameObject {
 public:
 	virtual void process(float delta) = 0;
-	void loadTexture(std::string path);
-private:
-	sf::Texture texture;
 };
 
 #endif

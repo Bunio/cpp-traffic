@@ -2,9 +2,9 @@
 #define PLAYER_H
 
 #include <iostream>
-#include "GameObject.h"
+#include "GameObject2D.h"
 
-class Player : public GameObject{
+class Player : public GameObject2D{
 public:
 	void process(float delta);
 	void moveLeft();

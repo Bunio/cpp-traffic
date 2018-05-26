@@ -2,6 +2,7 @@
 #include <iostream>
 #include "Files.h"
 #include "Road.h"
+#include "RoadManager.h"
 #include "Properties.h"
 #include "Player.h"
 #include "InputHandler.h"
@@ -15,6 +16,7 @@ const int speed = 50;
 int main()
 {
 	
+	std::vector<GameObject2D*> gameObjects2D;
 	std::vector<GameObject*> gameObjects;
 
 	// TODO: Use camera
@@ -22,64 +24,59 @@ int main()
 	window.setFramerateLimit(60);
 
 
-	// ROAD ----------------------------
-
-	Road road1, road2;
-	road1.loadTexture(Files::TEXTURE_ROAD);
-	road2.loadTexture(Files::TEXTURE_ROAD);
-	road1.setSpeed(speed);
-	road2.setSpeed(speed);
-	int height = road1.getLocalBounds().height;
-	road2.setPosition(sf::Vector2f(0.0, -height));
-
 	Player player;
+	RoadManager roadManager;
 	InputHandler input(&player);
-	GameObject* pp = &player;
-
 	
-	gameObjects.push_back(&road1);
-	gameObjects.push_back(&road2);
 	gameObjects.push_back(&player);
+	gameObjects.push_back(&roadManager);
+	
+	gameObjects2D.push_back(roadManager.getRoads()[0]);
+	gameObjects2D.push_back(roadManager.getRoads()[1]);
+	gameObjects2D.push_back(&player);
 
 	// PLAYER --------------------------
 	player.loadTexture(Files::TEXTURE_MOTORBIKE);
-
 	player.scale(0.35, 0.35);
 	int playerWidth = player.getRealWidth();
 	int playerHeight = player.getRealHeight();
 	player.setPosition(Properties::SCENE_WIDTH/2 - playerWidth /2, Properties::SCENE_HEIGHT - playerHeight - 20);
+	// -------------------------------------
+
 
 	while (window.isOpen())
 	{
 		sf::Event event;
 		while (window.pollEvent(event))
-		{
-			if (event.type == sf::Event::Closed)
-				window.close();
-		}
-		window.clear();
+			if (event.type == sf::Event::Closed)window.close();
 
-		// ROAD -------------------------------------------
-	
-
-		if (road1.getPosition().y >= Properties::SCENE_HEIGHT) {
-			road1.setPosition(sf::Vector2f(0, road2.getPosition().y - height));
-		}
-		if (road2.getPosition().y >= Properties::SCENE_HEIGHT) {
-			road2.setPosition(sf::Vector2f(0, road1.getPosition().y - height));
-		}
 		
+		window.clear();
 
 		for (int i = 0; i < gameObjects.size(); i++) {
 			gameObjects[i]->process(2.0);
-			window.draw(*gameObjects[i]);
 		}
-
+		for (int i = 0; i < gameObjects2D.size(); i++) {
+			gameObjects2D[i]->process(2.0);
+			window.draw(*gameObjects2D[i]);
+		}
+		
+		
 		input.handleInput(2.0);
-		// -------------------------------------------------
-
 		window.display();
 	}
 
 	return 0;
 }
+
+/*
+void processGameObjects(std::vector<GameObject*> gameObjects) {
+	for (int i = 0; i < gameObjects.size(); i++)
+		gameObjects[i]->process(2.0);
+}
+
+void drawGameObjects(std::vector<GameObject2D*> gameObjects2D, sf::RenderWindow* window) {
+	for (int i = 0; i < gameObjects2D.size(); i++)
+		window->draw(*gameObjects2D[i]);
+}
+*/

@@ -1,7 +1,7 @@
-#include "GameObject.h"
+#include "GameObject2D.h"
 #include <iostream>
 
-void GameObject::loadTexture(std::string path)
+void GameObject2D::loadTexture(std::string path)
 {
 	if (!texture.loadFromFile(path))
 	{
