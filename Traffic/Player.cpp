@@ -24,12 +24,3 @@ void Player::moveLeft() {
 void Player::moveRight() {
 		speed_cur += 1 * speed_vel;
 	}
-
-	// Utility methods ------------------
-
-int Player::getRealWidth() {
-		return sf::Sprite::getLocalBounds().width * sf::Sprite::getScale().x;
-	}
-int Player::getRealHeight() {
-		return sf::Sprite::getLocalBounds().height * sf::Sprite::getScale().y;
-	}

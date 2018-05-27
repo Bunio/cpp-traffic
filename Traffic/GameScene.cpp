@@ -4,6 +4,7 @@
 #include "RoadManager.h"
 #include "Properties.h"
 #include "Player.h"
+#include "Coin.h"
 #include "InputHandler.h"
 
 std::vector<GameObject2D*> gameObjects2D;
@@ -15,6 +16,14 @@ GameScene::GameScene(sf::RenderWindow * window)
 	setupRoads();
 	setupPlayer();
 	setupInput();
+	setupCoinManager();
+	/*
+	Coin coin(10);
+	coin.loadTexture(Files::TEXTURE_COIN);
+	coin.setPosition(50, 0);
+
+	gameObjects2D.push_back(&coin);*/
+
 }
 
 void GameScene::process(float delta)
@@ -41,6 +50,23 @@ void GameScene::setupRoads() {
 	gameObjects.push_back(roadManager);
 	gameObjects2D.push_back(roadManager->getRoads()[0]);
 	gameObjects2D.push_back(roadManager->getRoads()[1]);
+}
+
+void GameScene::setupCoinManager()
+{
+	coinManager = new CoinManager();
+	gameObjects.push_back(coinManager);
+
+	std::vector<Coin*> coins = coinManager->generateCoins();
+	
+	for (int i = 0; i < coins.size(); i++) {
+		gameObjects2D.push_back(coins[i]);
+	}
+
+}
+
+void GameScene::setupCarManager()
+{
 }
 
 void GameScene::setupInput() {

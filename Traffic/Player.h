@@ -9,8 +9,6 @@ public:
 	void process(float delta);
 	void moveLeft();
 	void moveRight();
-	int getRealWidth();
-	int getRealHeight();
 };
 
 #endif

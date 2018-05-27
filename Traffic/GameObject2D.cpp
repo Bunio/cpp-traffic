@@ -11,3 +11,10 @@ void GameObject2D::loadTexture(std::string path)
 	this->setTexture(texture);
 	
 }
+
+int GameObject2D::getRealWidth() {
+	return sf::Sprite::getLocalBounds().width * sf::Sprite::getScale().x;
+}
+int GameObject2D::getRealHeight() {
+	return sf::Sprite::getLocalBounds().height * sf::Sprite::getScale().y;
+}

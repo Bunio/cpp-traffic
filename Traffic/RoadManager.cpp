@@ -22,8 +22,6 @@ void RoadManager::process(float delta)
 		road2.setPosition(sf::Vector2f(0, road1.getPosition().y - roadHeight));
 	}
 
-	std::cout << road1.getPosition().y;
-
 	road1.process(delta);
 	road2.process(delta);
 }

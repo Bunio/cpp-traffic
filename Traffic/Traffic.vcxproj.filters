@@ -46,6 +46,12 @@
     <Filter Include="Source Files\GameObjects\Scenes">
       <UniqueIdentifier>{bd126624-8a05-4b26-b519-067f1b0d44e6}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjects\Collectibles">
+      <UniqueIdentifier>{bc4b2d6e-8600-49cc-a9fe-0cc87799cf3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\GameObjects\Scenes">
+      <UniqueIdentifier>{d1d61bae-ba7b-48ae-beef-29ea0e0e0dbf}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -75,6 +81,12 @@
     <ClCompile Include="GameScene.cpp">
       <Filter>Source Files\GameObjects\Scenes</Filter>
     </ClCompile>
+    <ClCompile Include="Coin.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
+    <ClCompile Include="CoinManager.cpp">
+      <Filter>Source Files\GameObjects</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Files.h">
@@ -101,8 +113,14 @@
     <ClInclude Include="RoadManager.h">
       <Filter>Header Files\GameObjects\Road</Filter>
     </ClInclude>
+    <ClInclude Include="Coin.h">
+      <Filter>Header Files\GameObjects\Collectibles</Filter>
+    </ClInclude>
+    <ClInclude Include="CoinManager.h">
+      <Filter>Header Files\GameObjects\Collectibles</Filter>
+    </ClInclude>
     <ClInclude Include="GameScene.h">
-      <Filter>Header Files\GameObjects\Core</Filter>
+      <Filter>Header Files\GameObjects\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

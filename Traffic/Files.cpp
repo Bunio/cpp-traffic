@@ -3,5 +3,6 @@
 
 Files::Files() {};
 std::string Files::TEXTURE_MOTORBIKE = "./motorbike.png";
+std::string Files::TEXTURE_COIN = "./coin.png";
 std::string Files::TEXTURE_ROAD = "./road.jpg";
 std::string Files::FONT_ARIAL = "C:/Windows/Fonts/Arial.ttf";

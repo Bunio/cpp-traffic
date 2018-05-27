@@ -6,6 +6,8 @@
 class GameObject2D : public GameObject, public sf::Sprite {
 public:
 	void loadTexture(std::string path);
+	int getRealWidth();
+	int getRealHeight();
 private:
 	sf::Texture texture;
 };
