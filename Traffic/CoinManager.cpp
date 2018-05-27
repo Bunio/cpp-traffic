@@ -2,21 +2,66 @@
 #include "Files.h"
 #include "Properties.h"
 
+CoinManager::CoinManager(std::list<GameObject2D*>* gameObjects2D)
+{
+	this->gameObjects2D = gameObjects2D;
+	initializeLineCoordinates();
+	initializeTimer();
+}
+
+void CoinManager::initializeLineCoordinates()
+{
+	lineCoordinates.push_back(Properties::LINE_1_X);
+	lineCoordinates.push_back(Properties::LINE_2_X);
+	lineCoordinates.push_back(Properties::LINE_3_X);
+}
+
+void CoinManager::initializeTimer()
+{
+	delayMin = Properties::COIN_MANAGER_DELAY_MIN;
+	delayMax = Properties::COIN_MANAGER_DELAY_MAX;
+	resetTimer();
+}
+
+void CoinManager::resetTimer()
+{
+	currentDelay = Properties::COIN_MANAGER_DELAY_MIN + (std::rand() % (Properties::COIN_MANAGER_DELAY_MAX - Properties::COIN_MANAGER_DELAY_MIN + 1));
+}
+
+int CoinManager::randomLine()
+{
+	int lines = lineCoordinates.size();
+	int randomLine = currentDelay = 0 + (std::rand() % (lines));
+	return lineCoordinates[randomLine];
+}
+int CoinManager::randomAmount()
+{
+	return  Properties::COIN_MANAGER_AMOUNT_MIN + (std::rand() % (Properties::COIN_MANAGER_AMOUNT_MAX - Properties::COIN_MANAGER_AMOUNT_MIN + 1));
+}
 void CoinManager::process(float delta)
 {
+	currentDelay -= delta;
+
+	if (currentDelay <= 0.0) {
+		generateCoins();
+		resetTimer();
+
+	}
 }
 
 std::list<Coin*> CoinManager::generateCoins()
 {
 	std::list<Coin*> newCoins;
-
-	for (int i = 0; i < 10; i++) {
+	int randomLineCoordinates = randomLine();
+	int amout = randomAmount();
+	for (int i = 0; i < amout; i++) {
 		Coin* coin = new Coin(Properties::COIN_SPEED);
 		coin->scale(0.1, 0.1);
 		coin->loadTexture(Files::TEXTURE_COIN);
-		coin->setPosition(Properties::LINE_1_X, 50 - i * (coin->getRealWidth() +  10));
+		coin->setPosition(randomLineCoordinates, -Properties::SCENE_HEIGHT/2 - i * (coin->getRealWidth() +  10));
 		coins.push_back(coin);
-		newCoins.push_back(coin);
+		
+		gameObjects2D->push_back(coin);
 	};
 
 	return newCoins;
@@ -34,8 +79,10 @@ std::list<Coin*> CoinManager::checkCollision(Player * player)
 		}
 	}
 
-	// Remove them from LOCAL coin list (Does not remove from game scene)
-	for (auto const& coin : collidedCoins) coins.remove(coin);
-
+	// Remove them from coin lists
+	for (auto const& coin : collidedCoins) {
+		coins.remove(coin);
+		gameObjects2D->remove(coin);
+	}
 	return collidedCoins;
 }

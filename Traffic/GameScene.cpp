@@ -36,11 +36,7 @@ void GameScene::process(float delta)
 }
 
 void GameScene::handleCollisions() {
-	std::list<Coin*> collidedCoins = coinManager->checkCollision(player);
-
-	for (auto const& coin : collidedCoins) {
-		gameObjects2D.remove(coin);
-	}
+	coinManager->checkCollision(player);
 }
 
 void GameScene::setupPlayer() {
@@ -60,10 +56,8 @@ void GameScene::setupRoads() {
 
 void GameScene::setupCoinManager()
 {
-	coinManager = new CoinManager();
+	coinManager = new CoinManager(&gameObjects2D);
 	gameObjects.push_back(coinManager);
-	std::list<Coin*> coins = coinManager->generateCoins();
-	for (auto const& coin : coins) gameObjects2D.push_back(coin);
 }
 
 void GameScene::setupCarManager()
