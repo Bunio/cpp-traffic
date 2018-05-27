@@ -6,6 +6,7 @@ CoinManager::CoinManager(std::list<GameObject2D*>* gameObjects2D)
 {
 	this->gameObjects2D = gameObjects2D;
 	initializeLineCoordinates();
+	initializeTextures();
 	initializeTimer();
 }
 
@@ -16,12 +17,23 @@ void CoinManager::initializeLineCoordinates()
 	lineCoordinates.push_back(Properties::LINE_3_X);
 }
 
+
+void CoinManager::initializeTextures()
+{
+	sf::Texture texture;
+	if (!texture.loadFromFile(Files::TEXTURE_COIN)) {
+		std::cout << "COULD NOT LOAD COIN TEXTURE";
+	}
+	coinTextures.push_back(texture);
+}
+
 void CoinManager::initializeTimer()
 {
 	delayMin = Properties::COIN_MANAGER_DELAY_MIN;
 	delayMax = Properties::COIN_MANAGER_DELAY_MAX;
 	resetTimer();
 }
+
 
 void CoinManager::resetTimer()
 {
@@ -57,7 +69,7 @@ std::list<Coin*> CoinManager::generateCoins()
 	for (int i = 0; i < amout; i++) {
 		Coin* coin = new Coin(Properties::COIN_SPEED);
 		coin->scale(0.1, 0.1);
-		coin->loadTexture(Files::TEXTURE_COIN);
+		coin->setTexture(coinTextures[0]);
 		coin->setPosition(randomLineCoordinates, -Properties::SCENE_HEIGHT/2 - i * (coin->getRealWidth() +  10));
 		coins.push_back(coin);
 		

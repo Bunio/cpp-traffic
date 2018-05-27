@@ -18,7 +18,9 @@ private:
 	std::list<Coin*> coins;
 	std::list<GameObject2D*>* gameObjects2D;
 	std::vector<int> lineCoordinates;
+	std::vector<sf::Texture> coinTextures;
 	void initializeTimer();
+	void initializeTextures();
 	void initializeLineCoordinates();
 	void resetTimer();
 	int randomLine();
