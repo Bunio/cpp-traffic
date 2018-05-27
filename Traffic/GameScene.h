@@ -3,6 +3,9 @@
 
 #include "GameObject.h"
 #include "GameObject2D.h"
+#include "RoadManager.h"
+#include "Player.h"
+#include "InputHandler.h"
 #include <SFML/Graphics.hpp>
 
 class GameScene : public GameObject {
@@ -14,6 +17,10 @@ private:
 	void setupPlayer();
 	void setupInput();
 	void setupRoads();
+
+	Player* player;
+	RoadManager* roadManager;
+	InputHandler* input;
 };
 
 #endif

@@ -6,17 +6,12 @@
 #include "Player.h"
 #include "InputHandler.h"
 
-Player player;
-RoadManager roadManager;
-InputHandler input(&player);
-
 std::vector<GameObject2D*> gameObjects2D;
 std::vector<GameObject*> gameObjects;
 
 GameScene::GameScene(sf::RenderWindow * window)
 {
 	this->window = window;
-
 	setupRoads();
 	setupPlayer();
 	setupInput();
@@ -34,18 +29,21 @@ void GameScene::process(float delta)
 }
 
 void GameScene::setupPlayer() {
-	player.loadTexture(Files::TEXTURE_MOTORBIKE);
-	player.scale(0.35, 0.35);
-	player.setPosition(Properties::SCENE_WIDTH / 2 - player.getRealWidth() / 2, Properties::SCENE_HEIGHT - player.getRealHeight() - 20);
-	gameObjects2D.push_back(&player);
+	player = new Player();
+	player->loadTexture(Files::TEXTURE_MOTORBIKE);
+	player->scale(0.35, 0.35);
+	player->setPosition(Properties::SCENE_WIDTH / 2 - player->getRealWidth() / 2, Properties::SCENE_HEIGHT - player->getRealHeight() - 20);
+	gameObjects2D.push_back(player);
 }
 
 void GameScene::setupRoads() {
-	gameObjects.push_back(&roadManager);
-	gameObjects2D.push_back(roadManager.getRoads()[0]);
-	gameObjects2D.push_back(roadManager.getRoads()[1]);
+	roadManager = new RoadManager();
+	gameObjects.push_back(roadManager);
+	gameObjects2D.push_back(roadManager->getRoads()[0]);
+	gameObjects2D.push_back(roadManager->getRoads()[1]);
 }
 
 void GameScene::setupInput() {
-	gameObjects.push_back(&input);
+	input = new InputHandler(player);
+	gameObjects.push_back(input);
 }
