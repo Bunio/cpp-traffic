@@ -3,15 +3,18 @@
 
 #include "GameObject.h"
 #include "Coin.h"
+#include "Player.h"
 #include <list>
 
 
 class CoinManager : public GameObject {
 public:
 	void process(float delta);
-	std::vector<Coin*> generateCoins();
+	std::list<Coin*> checkCollision(Player* player);
+	std::list<Coin*> generateCoins();
+	
 private:
-	std::vector<Coin*> coins;
+	std::list<Coin*> coins;
 
 };
 

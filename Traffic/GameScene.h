@@ -20,6 +20,7 @@ private:
 	void setupRoads();
 	void setupCoinManager();
 	void setupCarManager();
+	void handleCollisions();
 
 	Player* player;
 	RoadManager* roadManager;

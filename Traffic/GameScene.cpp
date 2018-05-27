@@ -7,8 +7,8 @@
 #include "Coin.h"
 #include "InputHandler.h"
 
-std::vector<GameObject2D*> gameObjects2D;
-std::vector<GameObject*> gameObjects;
+std::list<GameObject2D*> gameObjects2D;
+std::list<GameObject*> gameObjects;
 
 GameScene::GameScene(sf::RenderWindow * window)
 {
@@ -17,23 +17,28 @@ GameScene::GameScene(sf::RenderWindow * window)
 	setupPlayer();
 	setupInput();
 	setupCoinManager();
-	/*
-	Coin coin(10);
-	coin.loadTexture(Files::TEXTURE_COIN);
-	coin.setPosition(50, 0);
-
-	gameObjects2D.push_back(&coin);*/
-
 }
 
 void GameScene::process(float delta)
 {
-	for (int i = 0; i < gameObjects.size(); i++) {
-		gameObjects[i]->process(2.0);
+
+	for (auto const& i : gameObjects) {
+		i->process(2.0);
 	}
-	for (int i = 0; i < gameObjects2D.size(); i++) {
-		gameObjects2D[i]->process(2.0);
-		window->draw(*gameObjects2D[i]);
+
+	for (auto const& i : gameObjects2D) {
+		i->process(2.0);
+		window->draw(*i);
+	}
+
+	handleCollisions();
+}
+
+void GameScene::handleCollisions() {
+	std::list<Coin*> collidedCoins = coinManager->checkCollision(player);
+
+	for (auto const& coin : collidedCoins) {
+		gameObjects2D.remove(coin);
 	}
 }
 
@@ -56,13 +61,8 @@ void GameScene::setupCoinManager()
 {
 	coinManager = new CoinManager();
 	gameObjects.push_back(coinManager);
-
-	std::vector<Coin*> coins = coinManager->generateCoins();
-	
-	for (int i = 0; i < coins.size(); i++) {
-		gameObjects2D.push_back(coins[i]);
-	}
-
+	std::list<Coin*> coins = coinManager->generateCoins();
+	for (auto const& coin : coins) gameObjects2D.push_back(coin);
 }
 
 void GameScene::setupCarManager()
