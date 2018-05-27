@@ -5,7 +5,7 @@ Road::Road() {};
 
 void Road::process(float delta)
 {
-	move(sf::Vector2f(0, 20));
+	move(sf::Vector2f(0, speed * delta));
 }
 
 void Road::setSpeed(int speed) {

@@ -11,6 +11,7 @@ int main()
 	window.setFramerateLimit(60);
 
 	GameScene gameScene(&window);
+	sf::Clock deltaClock;
 
 	while (window.isOpen())
 	{
@@ -19,7 +20,7 @@ int main()
 			if (event.type == sf::Event::Closed)window.close();
 
 		window.clear();
-		gameScene.process(2.0);
+		gameScene.process(deltaClock.restart().asSeconds());
 		window.display();
 	}
 

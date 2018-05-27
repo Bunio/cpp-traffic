@@ -37,7 +37,7 @@ std::vector<Road*> RoadManager::getRoads()
 void RoadManager::buildRoads()
 {
 	road1.loadTexture(Files::TEXTURE_ROAD);
-	road1.setSpeed(50);
+	road1.setSpeed(Properties::BASE_SPEED);
 	road2.loadTexture(Files::TEXTURE_ROAD);
-	road2.setSpeed(50);
+	road2.setSpeed(Properties::BASE_SPEED);
 }

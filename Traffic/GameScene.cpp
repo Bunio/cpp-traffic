@@ -21,13 +21,14 @@ GameScene::GameScene(sf::RenderWindow * window)
 
 void GameScene::process(float delta)
 {
+	std::cout << delta;
 
 	for (auto const& i : gameObjects) {
-		i->process(2.0);
+		i->process(delta);
 	}
 
 	for (auto const& i : gameObjects2D) {
-		i->process(2.0);
+		i->process(delta);
 		window->draw(*i);
 	}
 
