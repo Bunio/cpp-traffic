@@ -52,6 +52,15 @@
     <Filter Include="Header Files\GameObjects\Scenes">
       <UniqueIdentifier>{d1d61bae-ba7b-48ae-beef-29ea0e0e0dbf}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\GameObjects\Cars">
+      <UniqueIdentifier>{2c157576-ed33-41de-8373-085798e7b952}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Collectibles">
+      <UniqueIdentifier>{4840e322-c76d-4bdf-a7c0-404cbb5e5b98}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\GameObjects\Cars">
+      <UniqueIdentifier>{0f58765b-6d14-4404-baa4-9576f3d66120}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -82,10 +91,16 @@
       <Filter>Source Files\GameObjects\Scenes</Filter>
     </ClCompile>
     <ClCompile Include="Coin.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\GameObjects\Collectibles</Filter>
     </ClCompile>
     <ClCompile Include="CoinManager.cpp">
-      <Filter>Source Files\GameObjects</Filter>
+      <Filter>Source Files\GameObjects\Collectibles</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
+      <Filter>Source Files\GameObjects\Cars</Filter>
+    </ClCompile>
+    <ClCompile Include="CarManager.cpp">
+      <Filter>Source Files\GameObjects\Cars</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -121,6 +136,12 @@
     </ClInclude>
     <ClInclude Include="GameScene.h">
       <Filter>Header Files\GameObjects\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>Header Files\GameObjects\Cars</Filter>
+    </ClInclude>
+    <ClInclude Include="CarManager.h">
+      <Filter>Header Files\GameObjects\Cars</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

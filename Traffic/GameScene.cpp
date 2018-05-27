@@ -17,12 +17,11 @@ GameScene::GameScene(sf::RenderWindow * window)
 	setupPlayer();
 	setupInput();
 	setupCoinManager();
+	setupCarManager();
 }
 
 void GameScene::process(float delta)
 {
-	std::cout << delta;
-
 	for (auto const& i : gameObjects) {
 		i->process(delta);
 	}
@@ -37,12 +36,13 @@ void GameScene::process(float delta)
 
 void GameScene::handleCollisions() {
 	coinManager->checkCollision(player);
+	carManager->checkCollision(player);
 }
 
 void GameScene::setupPlayer() {
 	player = new Player();
 	player->loadTexture(Files::TEXTURE_MOTORBIKE);
-	player->scale(0.35, 0.35);
+	player->scale(0.25, 0.25);
 	player->setPosition(Properties::SCENE_WIDTH / 2 - player->getRealWidth() / 2, Properties::SCENE_HEIGHT - player->getRealHeight() - 20);
 	gameObjects2D.push_back(player);
 }
@@ -62,6 +62,8 @@ void GameScene::setupCoinManager()
 
 void GameScene::setupCarManager()
 {
+	carManager = new CarManager(&gameObjects2D);
+	gameObjects.push_back(carManager);
 }
 
 void GameScene::setupInput() {

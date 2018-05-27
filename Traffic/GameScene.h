@@ -7,6 +7,7 @@
 #include "Player.h"
 #include "InputHandler.h"
 #include "CoinManager.h"
+#include "CarManager.h"
 #include <SFML/Graphics.hpp>
 
 class GameScene : public GameObject {
@@ -26,6 +27,7 @@ private:
 	RoadManager* roadManager;
 	InputHandler* input;
 	CoinManager* coinManager;
+	CarManager* carManager;
 };
 
 #endif

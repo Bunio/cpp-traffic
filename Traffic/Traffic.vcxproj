@@ -129,6 +129,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Car.cpp" />
+    <ClCompile Include="CarManager.cpp" />
     <ClCompile Include="Coin.cpp" />
     <ClCompile Include="CoinManager.cpp" />
     <ClCompile Include="Files.cpp" />
@@ -142,6 +144,8 @@
     <ClCompile Include="RoadManager.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="CarManager.h" />
     <ClInclude Include="Coin.h" />
     <ClInclude Include="CoinManager.h" />
     <ClInclude Include="Files.h" />
