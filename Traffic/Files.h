@@ -13,5 +13,7 @@ public:
 	static std::string TEXTURE_CAR_4;
 	static std::string TEXTURE_CAR_5;
 
+	static std::string TEXTURE_NEW_GAME_BUTTON;
+
 	static std::string FONT_ARIAL;
 };

@@ -12,5 +12,7 @@ std::string Files::TEXTURE_CAR_3 = "./Car.png";
 std::string Files::TEXTURE_CAR_4 = "./Police.png";
 std::string Files::TEXTURE_CAR_5 = "./Black_viper.png";
 
+std::string Files::TEXTURE_NEW_GAME_BUTTON = "./NewGameButton.png";
+
 
 std::string Files::FONT_ARIAL = "C:/Windows/Fonts/Arial.ttf";

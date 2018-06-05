@@ -61,6 +61,12 @@
     <Filter Include="Source Files\GameObjects\Cars">
       <UniqueIdentifier>{0f58765b-6d14-4404-baa4-9576f3d66120}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\UI">
+      <UniqueIdentifier>{d10c2a78-0edc-49b5-9139-51f08cd46ac3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UI">
+      <UniqueIdentifier>{151e8b88-e8b4-4d29-b506-7a4677bd2d82}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Main.cpp">
@@ -102,6 +108,12 @@
     <ClCompile Include="CarManager.cpp">
       <Filter>Source Files\GameObjects\Cars</Filter>
     </ClCompile>
+    <ClCompile Include="MenuScene.cpp">
+      <Filter>Source Files\GameObjects\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Button.cpp">
+      <Filter>Source Files\UI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Files.h">
@@ -142,6 +154,18 @@
     </ClInclude>
     <ClInclude Include="CarManager.h">
       <Filter>Header Files\GameObjects\Cars</Filter>
+    </ClInclude>
+    <ClInclude Include="MenuScene.h">
+      <Filter>Header Files\GameObjects\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="GameOverScene.h">
+      <Filter>Header Files\GameObjects\Scenes</Filter>
+    </ClInclude>
+    <ClInclude Include="Button.h">
+      <Filter>Header Files\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="SceneManager.h">
+      <Filter>Header Files\GameObjects\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

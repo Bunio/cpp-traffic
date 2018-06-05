@@ -2,7 +2,11 @@
 #include <iostream>
 #include <list>
 #include "GameScene.h"
+#include "MenuScene.h"
 #include "Properties.h"
+
+
+GameObject* currentScene;
 
 int main()
 {
@@ -11,6 +15,10 @@ int main()
 	window.setFramerateLimit(60);
 
 	GameScene gameScene(&window);
+	MenuScene menuScene(&window);
+
+	currentScene = &menuScene;
+
 	sf::Clock deltaClock;
 
 	while (window.isOpen())
@@ -20,7 +28,7 @@ int main()
 			if (event.type == sf::Event::Closed)window.close();
 
 		window.clear();
-		gameScene.process(deltaClock.restart().asSeconds());
+		currentScene->process(deltaClock.restart().asSeconds());
 		window.display();
 	}
 

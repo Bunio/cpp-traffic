@@ -1,3 +1,6 @@
+#ifndef PROPERTIES_H
+#define PROPERTIES_H
+
 #include <iostream>
 
 class Properties {
@@ -26,3 +29,5 @@ public:
 
 	static float SPEED_MODIFIER;
 };
+
+#endif
