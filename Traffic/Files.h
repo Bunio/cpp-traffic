@@ -1,3 +1,6 @@
+#ifndef FILES_H
+#define FILES_H
+
 #include <iostream>
 
 class Files {
@@ -14,6 +17,9 @@ public:
 	static std::string TEXTURE_CAR_5;
 
 	static std::string TEXTURE_NEW_GAME_BUTTON;
+	static std::string TEXTURE_RESTART_BUTTON;
 
 	static std::string FONT_ARIAL;
 };
+
+#endif

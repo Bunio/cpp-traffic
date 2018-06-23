@@ -12,7 +12,7 @@ public:
 	static GameObject* currentScene;
 	static void setScene(int sceneId, sf::RenderWindow* window);
 private:
-	
+	static sf::RenderWindow* window;
 };
 
 #endif

@@ -4,6 +4,7 @@
 #include "GameScene.h"
 #include "MenuScene.h"
 #include "Properties.h"
+#include "SceneManager.h"
 
 
 GameObject* currentScene;
@@ -14,10 +15,13 @@ int main()
 	sf::RenderWindow window(sf::VideoMode(Properties::SCENE_WIDTH, Properties::SCENE_HEIGHT),"Traffic", sf::Style::Default);
 	window.setFramerateLimit(60);
 
-	GameScene gameScene(&window);
-	MenuScene menuScene(&window);
+	//GameScene gameScene(&window);
+	//MenuScene menuScene(&window);
 
-	currentScene = &menuScene;
+	//currentScene = &menuScene;
+
+
+	SceneManager::setScene(1, &window);
 
 	sf::Clock deltaClock;
 
@@ -28,7 +32,7 @@ int main()
 			if (event.type == sf::Event::Closed)window.close();
 
 		window.clear();
-		currentScene->process(deltaClock.restart().asSeconds());
+		SceneManager::currentScene->process(deltaClock.restart().asSeconds());
 		window.display();
 	}
 

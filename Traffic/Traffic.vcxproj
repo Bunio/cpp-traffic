@@ -136,6 +136,7 @@
     <ClCompile Include="CoinManager.cpp" />
     <ClCompile Include="Files.cpp" />
     <ClCompile Include="GameObject2D.cpp" />
+    <ClCompile Include="GameOverScene.cpp" />
     <ClCompile Include="GameScene.cpp" />
     <ClCompile Include="InputHandler.cpp" />
     <ClCompile Include="Main.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="Properties.cpp" />
     <ClCompile Include="Road.cpp" />
     <ClCompile Include="RoadManager.cpp" />
+    <ClCompile Include="SceneManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />

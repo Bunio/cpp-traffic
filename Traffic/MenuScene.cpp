@@ -1,4 +1,5 @@
 #include "MenuScene.h"
+#include "SceneManager.h"
 
 std::list<Button*> buttons;
 
@@ -24,6 +25,7 @@ void MenuScene::process(float delta)
 			bool mouseInButton = i->getGlobalBounds().contains(pos);
 			if (mouseInButton) {
 				std::cout << "CLICK ON BUTTON";
+				SceneManager::setScene(2, window);
 			}
 		}
 	}

@@ -1,6 +1,7 @@
 #include "CarManager.h"
 #include "Files.h"
 #include "Properties.h"
+#include "SceneManager.h"
 
 CarManager::CarManager(std::list<GameObject2D*>* gameObjects2D)
 {
@@ -106,10 +107,15 @@ std::list<Car*> CarManager::checkCollision(Player * player)
 		}
 	}
 
-	// Remove them from car lists
-	for (auto const& car : collidedCars) {
-		cars.remove(car);
-		gameObjects2D->remove(car);
+	// Optimize
+	if (collidedCars.size() > 0) {
+		//SceneManager::setScene(3);
 	}
+
+	// Remove them from car lists
+	//for (auto const& car : collidedCars) {
+	//	cars.remove(car);
+	//	gameObjects2D->remove(car);
+	//}
 	return collidedCars;
 }
