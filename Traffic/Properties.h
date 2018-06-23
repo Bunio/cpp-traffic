@@ -28,6 +28,10 @@ public:
 	static int COIN_MANAGER_AMOUNT_MAX;
 
 	static float SPEED_MODIFIER;
+	static float SPEED_MODIFIER_MAX;
+	static float SPEED_MODIFIER_MIN;
+	static float SPEED_MODIFIER_INCREASE;
+	static float SPEED_MODIFIER_DECREASE;
 };
 
 #endif

@@ -17,10 +17,16 @@ void InputHandler::process(float delta) {
 
 
 		if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
-			Properties::SPEED_MODIFIER = 1.85;
+			Properties::SPEED_MODIFIER *= Properties::SPEED_MODIFIER_INCREASE;
+			if (Properties::SPEED_MODIFIER >= Properties::SPEED_MODIFIER_MAX) {
+				Properties::SPEED_MODIFIER = Properties::SPEED_MODIFIER_MAX;
+			}
 		} 
 		else {
-			Properties::SPEED_MODIFIER = 1.0;
+			Properties::SPEED_MODIFIER *= Properties::SPEED_MODIFIER_DECREASE;
+			if (Properties::SPEED_MODIFIER <= Properties::SPEED_MODIFIER_MIN) {
+				Properties::SPEED_MODIFIER = Properties::SPEED_MODIFIER_MIN;
+			}
 		}
 
 	}

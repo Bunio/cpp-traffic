@@ -107,15 +107,5 @@ std::list<Car*> CarManager::checkCollision(Player * player)
 		}
 	}
 
-	// Optimize
-	if (collidedCars.size() > 0) {
-		SceneManager::setScene(3);
-	}
-
-	// Remove them from car lists
-	//for (auto const& car : collidedCars) {
-	//	cars.remove(car);
-	//	gameObjects2D->remove(car);
-	//}
 	return collidedCars;
 }

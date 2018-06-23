@@ -6,6 +6,7 @@
 #include "Player.h"
 #include "Coin.h"
 #include "InputHandler.h"
+#include "SceneManager.h"
 
 std::list<GameObject2D*>* gameObjects2D;
 std::list<GameObject*>* gameObjects;
@@ -13,9 +14,14 @@ std::list<GameObject*>* gameObjects;
 
 GameScene::GameScene(sf::RenderWindow * window)
 {
+
+	// TODO: REFACTOR / MOVE TO METHODS
 	gameObjects2D = new std::list<GameObject2D*>();
 	gameObjects = new std::list<GameObject*>();
 	this->window = window;
+	Properties::SPEED_MODIFIER = Properties::SPEED_MODIFIER_MIN;
+	// -----------------------------------
+
 	setupRoads();
 	setupPlayer();
 	setupInput();
@@ -39,7 +45,13 @@ void GameScene::process(float delta)
 
 void GameScene::handleCollisions() {
 	coinManager->checkCollision(player);
-	carManager->checkCollision(player);
+
+	if (carManager->checkCollision(player).size() > 0) {
+		SceneManager::setScene(3);
+	}
+	else if (player->getPosition().x > Properties::SCENE_WIDTH || player->getPosition().x < -player->getRealWidth()) {
+		SceneManager::setScene(3);
+	}
 }
 
 void GameScene::setupPlayer() {
