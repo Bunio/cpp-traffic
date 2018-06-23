@@ -12,6 +12,8 @@ void SceneManager::setScene(int sceneId, sf::RenderWindow * window)
 
 void SceneManager::setScene(int sceneId)
 {
+	delete currentScene;
+
 	switch (sceneId) {
 	case 1:
 		currentScene = new MenuScene(window);

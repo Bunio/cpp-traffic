@@ -7,11 +7,14 @@
 #include "Coin.h"
 #include "InputHandler.h"
 
-std::list<GameObject2D*> gameObjects2D;
-std::list<GameObject*> gameObjects;
+std::list<GameObject2D*>* gameObjects2D;
+std::list<GameObject*>* gameObjects;
+//std::list<GameObject*>* gameObjects2;
 
 GameScene::GameScene(sf::RenderWindow * window)
 {
+	gameObjects2D = new std::list<GameObject2D*>();
+	gameObjects = new std::list<GameObject*>();
 	this->window = window;
 	setupRoads();
 	setupPlayer();
@@ -22,11 +25,11 @@ GameScene::GameScene(sf::RenderWindow * window)
 
 void GameScene::process(float delta)
 {
-	for (auto const& i : gameObjects) {
+	for (auto const& i : *gameObjects) {
 		i->process(delta);
 	}
 
-	for (auto const& i : gameObjects2D) {
+	for (auto const& i : *gameObjects2D) {
 		i->process(delta);
 		window->draw(*i);
 	}
@@ -44,29 +47,29 @@ void GameScene::setupPlayer() {
 	player->loadTexture(Files::TEXTURE_MOTORBIKE);
 	player->scale(0.25, 0.25);
 	player->setPosition(Properties::SCENE_WIDTH / 2 - player->getRealWidth() / 2, Properties::SCENE_HEIGHT - player->getRealHeight() - 20);
-	gameObjects2D.push_back(player);
+	gameObjects2D->push_back(player);
 }
 
 void GameScene::setupRoads() {
 	roadManager = new RoadManager();
-	gameObjects.push_back(roadManager);
-	gameObjects2D.push_back(roadManager->getRoads()[0]);
-	gameObjects2D.push_back(roadManager->getRoads()[1]);
+	gameObjects->push_back(roadManager);
+	gameObjects2D->push_back(roadManager->getRoads()[0]);
+	gameObjects2D->push_back(roadManager->getRoads()[1]);
 }
 
 void GameScene::setupCoinManager()
 {
-	coinManager = new CoinManager(&gameObjects2D);
-	gameObjects.push_back(coinManager);
+	coinManager = new CoinManager(gameObjects2D);
+	gameObjects->push_back(coinManager);
 }
 
 void GameScene::setupCarManager()
 {
-	carManager = new CarManager(&gameObjects2D);
-	gameObjects.push_back(carManager);
+	carManager = new CarManager(gameObjects2D);
+	gameObjects->push_back(carManager);
 }
 
 void GameScene::setupInput() {
 	input = new InputHandler(player);
-	gameObjects.push_back(input);
+	gameObjects->push_back(input);
 }
