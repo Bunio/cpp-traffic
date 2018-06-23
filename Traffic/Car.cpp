@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Car.h"
+#include "Properties.h" 
 
 Car::Car(int speed)
 {
@@ -8,7 +9,7 @@ Car::Car(int speed)
 
 void Car::process(float delta)
 {
-	move(sf::Vector2f(0, speed * delta));
+	move(sf::Vector2f(0, speed * Properties::SPEED_MODIFIER * delta));
 }
 
 void Car::setSpeed(int speed)

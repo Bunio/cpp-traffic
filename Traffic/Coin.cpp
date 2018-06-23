@@ -1,5 +1,6 @@
 #include <iostream>
 #include "Coin.h"
+#include "Properties.h"
 
 Coin::Coin(int speed)
 {
@@ -8,7 +9,7 @@ Coin::Coin(int speed)
 
 void Coin::process(float delta)
 {
-	move(sf::Vector2f(0, speed * delta));
+	move(sf::Vector2f(0, speed * Properties::SPEED_MODIFIER * delta));
 }
 
 void Coin::collect()
