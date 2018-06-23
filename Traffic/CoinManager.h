@@ -13,6 +13,7 @@ public:
 	void process(float delta);
 	std::list<Coin*> checkCollision(Player* player);
 	std::list<Coin*> generateCoins();
+	int getPoints();
 	
 private:
 	std::list<Coin*> coins;
@@ -27,6 +28,7 @@ private:
 	int randomAmount();
 	int delayMin;
 	int delayMax;
+	int points;
 	float currentDelay;
 };
 

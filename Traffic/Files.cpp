@@ -19,3 +19,4 @@ std::string Files::TEXTURE_BACKGROUND = "./Assets/background.png";
 
 
 std::string Files::FONT_ARIAL = "C:/Windows/Fonts/Arial.ttf";
+std::string Files::FONT_NOTEWORTHLY = "./Assets/Noteworthy.ttc";

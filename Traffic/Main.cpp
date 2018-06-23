@@ -11,15 +11,8 @@ GameObject* currentScene;
 
 int main()
 {
-	// TODO: Use camera
 	sf::RenderWindow window(sf::VideoMode(Properties::SCENE_WIDTH, Properties::SCENE_HEIGHT),"Traffic", sf::Style::Default);
 	window.setFramerateLimit(60);
-
-	//GameScene gameScene(&window);
-	//MenuScene menuScene(&window);
-
-	//currentScene = &menuScene;
-
 
 	SceneManager::setScene(1, &window);
 

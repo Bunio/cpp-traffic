@@ -4,6 +4,7 @@
 
 CoinManager::CoinManager(std::list<GameObject2D*>* gameObjects2D)
 {
+	points = 0;
 	this->gameObjects2D = gameObjects2D;
 	initializeLineCoordinates();
 	initializeTextures();
@@ -72,11 +73,15 @@ std::list<Coin*> CoinManager::generateCoins()
 		coin->setTexture(coinTextures[0]);
 		coin->setPosition(randomLineCoordinates, -Properties::SCENE_HEIGHT/2 - i * (coin->getRealWidth() +  10));
 		coins.push_back(coin);
-		
 		gameObjects2D->push_back(coin);
 	};
 
 	return newCoins;
+}
+
+int CoinManager::getPoints()
+{
+	return points;
 }
 
 std::list<Coin*> CoinManager::checkCollision(Player * player)
@@ -88,6 +93,7 @@ std::list<Coin*> CoinManager::checkCollision(Player * player)
 		if (player->getGlobalBounds().intersects(coin->getGlobalBounds())) {
 			coin->collect();
 			collidedCoins.push_back(coin);
+			points++;
 		}
 	}
 

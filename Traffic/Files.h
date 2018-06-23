@@ -22,6 +22,7 @@ public:
 	static std::string TEXTURE_BACKGROUND;
 
 	static std::string FONT_ARIAL;
+	static std::string FONT_NOTEWORTHLY;
 };
 
 #endif

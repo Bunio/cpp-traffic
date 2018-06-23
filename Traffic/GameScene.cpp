@@ -7,9 +7,13 @@
 #include "Coin.h"
 #include "InputHandler.h"
 #include "SceneManager.h"
+#include <string> 
+
 
 std::list<GameObject2D*>* gameObjects2D;
 std::list<GameObject*>* gameObjects;
+sf::Font* font;
+sf::Text* pointsCounter;
 //std::list<GameObject*>* gameObjects2;
 
 GameScene::GameScene(sf::RenderWindow * window)
@@ -20,8 +24,10 @@ GameScene::GameScene(sf::RenderWindow * window)
 	gameObjects = new std::list<GameObject*>();
 	this->window = window;
 	Properties::SPEED_MODIFIER = Properties::SPEED_MODIFIER_MIN;
+
 	// -----------------------------------
 
+	setupPoints();
 	setupRoads();
 	setupPlayer();
 	setupInput();
@@ -40,6 +46,8 @@ void GameScene::process(float delta)
 		window->draw(*i);
 	}
 
+	pointsCounter->setString(std::to_string(coinManager->getPoints()));
+	window->draw(*pointsCounter);
 	handleCollisions();
 }
 
@@ -60,6 +68,21 @@ void GameScene::setupPlayer() {
 	player->scale(0.25, 0.25);
 	player->setPosition(Properties::SCENE_WIDTH / 2 - player->getRealWidth() / 2, Properties::SCENE_HEIGHT - player->getRealHeight() - 20);
 	gameObjects2D->push_back(player);
+}
+
+void GameScene::setupPoints()
+{
+	font = new sf::Font();
+	pointsCounter = new sf::Text();
+
+	font->loadFromFile(Files::FONT_NOTEWORTHLY);
+	pointsCounter->setFont(*font);
+	pointsCounter->setString("0");
+
+	// set the color
+	pointsCounter->setFillColor(sf::Color::Black);
+	pointsCounter->setStyle(sf::Text::Bold);
+	pointsCounter->setCharacterSize(40);
 }
 
 void GameScene::setupRoads() {

@@ -17,6 +17,7 @@ public:
 private:
 	sf::RenderWindow* window;
 	void setupPlayer();
+	void setupPoints();
 	void setupInput();
 	void setupRoads();
 	void setupCoinManager();
