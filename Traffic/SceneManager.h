@@ -11,6 +11,7 @@ class SceneManager : public GameObject {
 public:
 	static GameObject* currentScene;
 	static void setScene(int sceneId, sf::RenderWindow* window);
+	static void setScene(int sceneId);
 private:
 	static sf::RenderWindow* window;
 };
